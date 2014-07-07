@@ -52,10 +52,11 @@
         <!-- THIS IS THE SOUND RECORD ACTIVITY -->
         <activity
             android:name="edu.vuum.mocca.ui.SoundRecordActivity"
-            android:label="@string/title_activity_sound_record">
-            <intent-filter> 										<!-- Line 56 -->
-                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
-            </intent-filter>
+            android:label="@string/title_activity_sound_record"
+			android:permision="android.permission.RECORD_AUDIO">
+			<!-- The intent filter is not necessary here, in this activity we need
+			to set the permission to the activity in order to prevent other apps which do not
+			have this permission to start the activity -->
         </activity>
         
     </application>

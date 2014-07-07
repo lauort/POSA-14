@@ -45,9 +45,15 @@ public class LoginActivity extends StoryActivityBase{
 	 * Get the file used for storing login credentials
 	 */
 	public static File getLoginFile (Context context) {
+		/**
+		 *	The correcta value to use is the SECURITY_PRIVATE, because this is
+		 * 	a value set at the StorageUtilities API used in the Android system
+		 *	If we use the value set in the main class we are causing a security leak.
+		 *	Because we are saving the data in a private storage we will use the SECURITY_PRIVATE
+		 * 	value **/
 		return StorageUtilities.getOutputMediaFile(context, 	// Line 48
 				StorageUtilities.MEDIA_TYPE_TEXT, 
-				MAX_SECURITY, 
+				StorageUtilities.SECURITY_PRIVATE, 
 				"login.txt");
 	}
 	
