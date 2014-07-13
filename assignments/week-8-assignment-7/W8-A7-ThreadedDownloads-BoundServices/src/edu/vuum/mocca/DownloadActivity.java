@@ -76,7 +76,7 @@ public class DownloadActivity extends DownloadBase {
                 // service parameter into an interface that can be
                 // used to make RPC calls to the Service.
 
-                mDownloadCall = null;
+                mDownloadCall = DownloadCall.Stub.asInterface(service);
             }
 
             /**
@@ -109,7 +109,7 @@ public class DownloadActivity extends DownloadBase {
                 // service parameter into an interface that can be
                 // used to make RPC calls to the Service.
 
-                mDownloadRequest = null;
+                mDownloadRequest = DownloadRequest.Stub.asInterface(service);
             }
 
             /**
@@ -145,7 +145,13 @@ public class DownloadActivity extends DownloadBase {
                 // sendPath().  Please use displayBitmap() defined in
                 // DownloadBase.
 
-                Runnable displayRunnable = null;
+                Runnable displayRunnable = new Runnable() {
+					@Override
+					public void run() {
+						displayBitmap(imagePathname);
+					}		
+				};
+				runOnUiThread(displayRunnable);
             }
         };
      
